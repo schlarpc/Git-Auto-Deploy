@@ -122,6 +122,10 @@ class GitAutoDeploy(object):
                 logger.info("Repository %s successfully cloned" % repo_config['url'])
             else:
                 logger.error("Unable to clone %s branch of repository %s" % (repo_config['branch'], repo_config['url']))
+                
+            ret = GitWrapper.deploy(repo_config)
+            logger.info("Deploy script for repo returned %s", ret)
+            
 
     def ssh_key_scan(self):
         import re
